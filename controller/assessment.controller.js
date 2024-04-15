@@ -2,6 +2,7 @@ import Assessment from "../models/Assessment.model.js";
 import Question from "./../models/Question.model.js";
 
 export const getAllAssessments = async (req, res) => {
+  console.log("Request recevied")
   const allAssessments = await Assessment.find();
 
   if (allAssessments) {

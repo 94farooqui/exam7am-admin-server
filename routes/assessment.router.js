@@ -3,7 +3,7 @@ import { addAssessmentQuestion, createAssessment, getAllAssessments, getAssessme
 
 const router = express.Router()
 
-
+//router.route('/').get(getAllAssessments).post(createAssessment)
 router.get('/', getAllAssessments)
 router.post('/', createAssessment)
 router.get('/:id', getAssessmentDetails)
