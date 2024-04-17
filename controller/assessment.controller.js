@@ -52,3 +52,30 @@ export const addAssessmentQuestion = async (req, res) => {
 };
 
 export const updateAssessment = (req, res) => {};
+
+
+export const getAssessmentQuestionDetails = async (req,res) => {
+  const questionId = req.params.qid
+  const assessmentId = req.params.id
+  console.log("request received", req.params)
+
+  const assessmentFound = await Assessment.findOne({_id: assessmentId})
+
+  if(!assessmentFound){
+    return res.status(404).json({msg:"Bad request, Assessment Not found"})
+  }
+
+  console.log(assessmentFound)
+
+  const questionFound = assessmentFound.questions.find(q => q._id == questionId)
+
+  if(!questionFound){
+    console.log("Question not found")
+    return res.status(404).json({msg:"Bad request, Question not found"})
+  }
+
+  console.log("Found",questionFound)
+
+  return res.status(200).send(questionFound)
+  
+}
