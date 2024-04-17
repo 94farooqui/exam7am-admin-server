@@ -1,5 +1,5 @@
 import express from 'express'
-import { addAssessmentQuestion, createAssessment, getAllAssessments, getAssessmentDetails, updateAssessment , getAssessmentQuestionDetails} from '../controller/assessment.controller.js';
+import { addAssessmentQuestion, createAssessment, getAllAssessments, getAssessmentDetails, updateAssessment , getAssessmentQuestionDetails,updateAssessmentQuestionDetails} from '../controller/assessment.controller.js';
 
 const router = express.Router()
 
@@ -11,6 +11,7 @@ router.post('/:id', addAssessmentQuestion)
 router.put('/:id', updateAssessment)
 
 router.get('/:id/question/:qid', getAssessmentQuestionDetails)
+router.put('/:id/question/:qid', updateAssessmentQuestionDetails)
 
 
 export default router;

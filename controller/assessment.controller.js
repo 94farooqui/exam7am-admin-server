@@ -74,8 +74,12 @@ export const getAssessmentQuestionDetails = async (req,res) => {
     return res.status(404).json({msg:"Bad request, Question not found"})
   }
 
-  console.log("Found",questionFound)
+  //console.log("Found",questionFound)
 
   return res.status(200).send(questionFound)
   
+}
+
+export const updateAssessmentQuestionDetails = (req,res) => {
+  console.log(req.params)
 }
