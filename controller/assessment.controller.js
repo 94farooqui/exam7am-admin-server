@@ -55,9 +55,10 @@ export const updateAssessment = (req, res) => {};
 
 
 export const getAssessmentQuestionDetails = async (req,res) => {
-  const questionId = req.params.qid
   const assessmentId = req.params.id
-  console.log("request received", req.params)
+  const questionId = req.params.qid
+  
+  //console.log("request received", req.params)
 
   const assessmentFound = await Assessment.findOne({_id: assessmentId})
 
@@ -80,6 +81,44 @@ export const getAssessmentQuestionDetails = async (req,res) => {
   
 }
 
-export const updateAssessmentQuestionDetails = (req,res) => {
-  console.log(req.params)
+export const updateAssessmentQuestionDetails = async (req,res) => {
+  console.log(req.params, req.body)
+  const assessmentId = req.params.id
+  const questionId = req.params.id
+
+  try{
+    const assessment = await Assessment.findOne({_id:assessmentId})
+
+    if(!assessment){
+      return res.status(404).json({error:"Bad request"})
+    }
+
+    const questionIndex = assessment.questions.find(q => q._id === questionId)
+    assessment.questions[questionIndex] = req.body
+    const updatedQuestion = await assessment.save()
+
+    if(updatedQuestion){
+      return res.status(200).send(updatedQuestion)
+    }
+
+    return res.status(500).json({error: "Something went wrong"})
+
+  }
+  catch(error){
+    console.error('Error updating question:', error);
+  }
+}
+
+export const deleteAssessmentQuestion = async (req,res) => {
+  const assessmentId = req.params.id
+  const questionId = req.params.qid
+  console.log( assessmentId , questionId)
+  const assessment = await Assessment.findOne({_id:assessmentId})
+  const afterFilter = assessment.questions.filter(q => q._id!== questionId)
+  assessment.questions = afterFilter
+  //assessment = assessment.questions.filter(q => q._id!== questionId)
+  const deleted = await assessment.save()
+if(deleted){
+  return res.status(200).send(deleted)
+}
 }

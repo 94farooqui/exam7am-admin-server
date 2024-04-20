@@ -1,5 +1,5 @@
 import express from 'express'
-import { addAssessmentQuestion, createAssessment, getAllAssessments, getAssessmentDetails, updateAssessment , getAssessmentQuestionDetails,updateAssessmentQuestionDetails} from '../controller/assessment.controller.js';
+import { addAssessmentQuestion, createAssessment, getAllAssessments, getAssessmentDetails, updateAssessment , getAssessmentQuestionDetails,updateAssessmentQuestionDetails,deleteAssessmentQuestion} from '../controller/assessment.controller.js';
 
 const router = express.Router()
 
@@ -12,6 +12,9 @@ router.put('/:id', updateAssessment)
 
 router.get('/:id/question/:qid', getAssessmentQuestionDetails)
 router.put('/:id/question/:qid', updateAssessmentQuestionDetails)
+router.delete('/:id/question/:qid', deleteAssessmentQuestion)
 
 
 export default router;
+
+// ${serverURL}/api/assessments/${assessmentId}/question/${questionId}
