@@ -1,6 +1,27 @@
 import Assessment from "../models/Assessment.model.js";
 import Question from "./../models/Question.model.js";
 
+
+
+export const getAssessmentHomepageData = async (req, res) => {
+  console.log("Request recevied")
+  const allAssessments = await Assessment.aggregate([
+    {
+      $project : {
+        title: 1,
+        description:1,
+        image: 1,
+        numberOfQuestions: { $size : '$questions'}
+      }
+    }
+  ])
+
+  if (allAssessments) {
+    return res.status(200).send(allAssessments);
+  }
+  return res.status(401).send({ error: "Unable to fetch the data" });
+};
+
 export const getAllAssessments = async (req, res) => {
   console.log("Request recevied")
   const allAssessments = await Assessment.find();
@@ -113,12 +134,13 @@ export const deleteAssessmentQuestion = async (req,res) => {
   const assessmentId = req.params.id
   const questionId = req.params.qid
   console.log( assessmentId , questionId)
-  const assessment = await Assessment.findOne({_id:assessmentId})
-  const afterFilter = assessment.questions.filter(q => q._id!== questionId)
-  assessment.questions = afterFilter
+  const assessment = await Assessment.findById(assessmentId)
+  assessment.questions = assessment.questions.filter(q => q._id!= questionId)
+  //assessment.questions = afterFilter
   //assessment = assessment.questions.filter(q => q._id!== questionId)
   const deleted = await assessment.save()
 if(deleted){
   return res.status(200).send(deleted)
 }
+else return res.status(501).json({msg:"Soemthing went wrong"})
 }

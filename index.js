@@ -2,7 +2,9 @@ import exp from 'constants'
 import express from 'express'
 import connectDB from './database/db.js'
 import dotenv from 'dotenv'
-import router from './routes/route.js'
+import userRouter from './routes/user/route.js'
+import adminRouter from './routes/user/route.js'
+
 import cors from 'cors'
 
 
@@ -14,7 +16,8 @@ app.use(cors())
 
 connectDB()
 
-app.use('/api', router)
+app.use('/api/user', userRouter)
+app.use('/api/admin',adminRouter)
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
     

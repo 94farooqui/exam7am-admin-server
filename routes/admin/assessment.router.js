@@ -1,5 +1,5 @@
 import express from 'express'
-import { addAssessmentQuestion, createAssessment, getAllAssessments, getAssessmentDetails, updateAssessment , getAssessmentQuestionDetails,updateAssessmentQuestionDetails,deleteAssessmentQuestion} from '../controller/assessment.controller.js';
+import { addAssessmentQuestion, createAssessment, getAllAssessments, getAssessmentDetails, updateAssessment , getAssessmentQuestionDetails,updateAssessmentQuestionDetails,deleteAssessmentQuestion} from '../../controller/assessment.controller.js';
 
 const router = express.Router()
 
