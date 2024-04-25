@@ -3,7 +3,7 @@ import express from 'express'
 import connectDB from './database/db.js'
 import dotenv from 'dotenv'
 import userRouter from './routes/user/route.js'
-import adminRouter from './routes/user/route.js'
+import adminRouter from './routes/admin/route.js'
 
 import cors from 'cors'
 
@@ -16,6 +16,9 @@ app.use(cors())
 
 connectDB()
 
+// app.get('/api/admin/modules',(req,res) => {
+//     res.status(200).json({msg:"Hello"})
+// })
 app.use('/api/user', userRouter)
 app.use('/api/admin',adminRouter)
 app.listen(port, () => {

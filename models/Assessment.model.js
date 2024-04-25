@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import { questionSchema } from "./Question.model.js";
 
 
-const assessmentSchema = new mongoose.Schema({
+export const assessmentSchema = new mongoose.Schema({
     title: String,
     description: String,
     image: String,
