@@ -3,6 +3,7 @@ import { questionSchema } from "./Question.model.js";
 
 
 export const assessmentSchema = new mongoose.Schema({
+    name: String,
     title: String,
     description: String,
     image: String,
@@ -11,6 +12,8 @@ export const assessmentSchema = new mongoose.Schema({
         default :[]
     }
 })
+
+
 
 
 const Assessment = mongoose.model("Assessment", assessmentSchema)
