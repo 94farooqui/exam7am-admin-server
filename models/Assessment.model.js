@@ -6,7 +6,10 @@ export const assessmentSchema = new mongoose.Schema({
     title: String,
     description: String,
     image: String,
-    questions: [questionSchema]
+    questions: {
+        type: [questionSchema],
+        default :[]
+    }
 })
 
 
