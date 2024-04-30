@@ -3,16 +3,23 @@ import { addAssessmentQuestion, createAssessment, getAllAssessments, getAssessme
 
 const router = express.Router()
 
-//router.route('/').get(getAllAssessments).post(createAssessment)
+
+
+//being used
 router.get('/', getAllAssessments)
+router.get('/:id/question/:qid', getAssessmentQuestionDetails)
+router.put('/:id/question/:qid', updateAssessmentQuestionDetails)
+router.delete('/:id/question/:qid', deleteAssessmentQuestion)
+
+
+
+//router.route('/').get(getAllAssessments).post(createAssessment)
+
 router.post('/', createAssessment)
 router.get('/:id', getAssessmentDetails)
 router.post('/:id', addAssessmentQuestion)
 router.put('/:id', updateAssessment)
 
-router.get('/:id/question/:qid', getAssessmentQuestionDetails)
-router.put('/:id/question/:qid', updateAssessmentQuestionDetails)
-router.delete('/:id/question/:qid', deleteAssessmentQuestion)
 
 
 export default router;

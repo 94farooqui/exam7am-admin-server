@@ -22,7 +22,7 @@ export const addNewModule = async (req, res) => {
 export const getModuleCategoires = async (req, res) => {
   console.log(req.params.module);
 
-  const moduleFound = await Module.findOne({ name: req.params.module });
+  const moduleFound = await Module.findOne({ name: req.params.module }).populate('assessments');
 
   if (!moduleFound) {
     return res.status(404).json({ msg: "Not found" });
@@ -46,6 +46,7 @@ export const getModuleCategoires = async (req, res) => {
 export const addModuleCategory = async (req, res) => {
   const module = req.params.module;
   const newCategory = new Assessment(req.body);
+  const savedCategory = await newCategory.save()
 
   try {
     const foundModule = await Module.findOne({ name: module });
@@ -57,7 +58,7 @@ export const addModuleCategory = async (req, res) => {
     console.log("Module", foundModule);
     console.log("Assessments", foundModule.assessments);
 
-    foundModule.assessments.push(newCategory);
+    foundModule.assessments.push(savedCategory._id);
     const saved = await foundModule.save();
     console.log("After save", saved);
     return res.status(200).json({ msg: "Successfull Added" });
@@ -83,20 +84,19 @@ export const getModuleCategoryDetails = async (req, res) => {
       console.log("Bad request");
       return res.status(400).json({ msg: "Bad request" });
     }
-    return res.status(200).send(fonudAssessment)
+    return res.status(200).send(fonudAssessment);
   } catch (error) {
     return res.status(500).json({ msg: error });
   }
 };
 
+export const addNewQuestion = async (req, res) => {
+  const { module, category } = req.params;
 
-export const addNewQuestion = async (req,res) => {
-  const {module,category} = req.params
+  console.log(module, category);
 
-  console.log(module,category)
-
-  const newQuestion = new Question(req.body)
-  console.log(newQuestion)
+  const newQuestion = new Question(req.body);
+  console.log(newQuestion);
 
   try {
     const foundModule = await Module.findOne({ name: module });
@@ -105,17 +105,19 @@ export const addNewQuestion = async (req,res) => {
       return res.status(400).json({ msg: "Bad request" });
     }
 
-    const assessmentIndex = foundModule.assessments.findIndex(obj => obj.name ==category )
-    console.log("Index " ,assessmentIndex)
-    foundModule.assessments[assessmentIndex].questions.push(newQuestion)
-    const saved = await foundModule.save()
+    const assessmentIndex = foundModule.assessments.findIndex(
+      (obj) => obj.name == category
+    );
+    console.log("Index ", assessmentIndex);
+    foundModule.assessments[assessmentIndex].questions.push(newQuestion);
+    const saved = await foundModule.save();
 
     if (!saved) {
       console.log("Bad request");
       return res.status(500).json({ msg: "Something went wrong" });
     }
-    return res.status(200).send({msg:"Successfully added"})
+    return res.status(200).send({ msg: "Successfully added" });
   } catch (error) {
     return res.status(500).json({ msg: error });
   }
-}
+};

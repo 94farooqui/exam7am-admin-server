@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import { assessmentSchema } from "./Assessment.model.js";
 
 const moduleSchema = new mongoose.Schema({
@@ -15,7 +15,12 @@ const moduleSchema = new mongoose.Schema({
         default: ""
     },
     imageUrl: String,
-    assessments: [assessmentSchema]
+    assessments: [
+        {
+            type : Schema.Types.ObjectId,
+            ref : "Assessment"
+        }
+    ]
 })
 
 const Module = mongoose.model("Module",moduleSchema)

@@ -3,12 +3,16 @@ import { getAllModules,addNewModule,getModuleCategoires,addModuleCategory,getMod
 
 const moduleRouter = express.Router()
 
+
+
+
+//being used
 moduleRouter.get('/',getAllModules)
-moduleRouter.post('/',addNewModule)
 moduleRouter.get('/:module/categories',getModuleCategoires)
+moduleRouter.post('/',addNewModule)
 moduleRouter.get('/:module/categories/:category',getModuleCategoryDetails)
-moduleRouter.post('/:module/categories/:category/newQuestion',addNewQuestion)
 moduleRouter.post('/:module/categories',addModuleCategory)
+moduleRouter.post('/:module/categories/:category/newQuestion',addNewQuestion)
 
 
 

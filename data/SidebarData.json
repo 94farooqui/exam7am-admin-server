@@ -1,0 +1,179 @@
+{
+  "sidebar": [
+    {
+      "name": "mathematical",
+      "title": "Mathematical",
+      "description": "Engage in a stimulating challenge with our mathematics quiz, testing your problem-solving skills and numerical aptitude.\"\n\"Put your math knowledge to the test with our interactive quiz, covering a range of topics from arithmetic to advanced calculus",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/exam7am-9621a.appspot.com/o/Modules%2Fimages%2F1714050635739maths.jpg?alt=media&token=de9c86cd-d156-42a2-9f23-3dcf1c06c9bb"
+    },
+    {
+      "_id": { "$oid": "662a592039c80b26899aa825" },
+      "name": "accounting",
+      "title": "Accounting",
+      "description": "\"Test your financial acumen and accounting expertise with our quiz, featuring a variety of questions on balance sheets, income statements, and financial ratios.\"\n\"Dive into the world of accounting with our quiz, designed to assess your understanding of concepts such as debits and credits, journal entries, and financial analysis.\"",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/exam7am-9621a.appspot.com/o/Modules%2Fimages%2F1714051352464accounts_2.jpg?alt=media&token=06ae4fef-c118-4641-abfb-a74b4c2dd7fa"
+    },
+    {
+      "name": "it-&-software",
+      "title": "IT & Software",
+      "description": "Test your tech prowess with questions on coding languages, algorithms, and software development methodologies in this IT and Software quiz.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/exam7am-9621a.appspot.com/o/Modules%2Fimages%2F1714098071481it-software.jpg?alt=media&token=3445adf4-9cfa-43fd-83aa-33ea8950f7bb",
+      "assessments": [
+        {
+          "title": "Windows Administration",
+          "description": "Test your Windows administration skills with questions covering user management, network configurations, and system troubleshooting.\"",
+          "image": "https://firebasestorage.googleapis.com/v0/b/exam7am-9621a.appspot.com/o/Assessments%2Fimages%2F1714099944657windows-server-administration-training.png?alt=media&token=a437c66b-7a8e-43b6-877c-12fa15ae1163",
+          "questions": [],
+          "_id": { "$oid": "662b1baf5c30c7dda8088ed6" },
+          "name": "windows-administration"
+        },
+        {
+          "title": "Python Programing",
+          "description": "est your Python prowess with this quiz featuring questions on syntax, data types, and control structures.",
+          "image": "https://firebasestorage.googleapis.com/v0/b/exam7am-9621a.appspot.com/o/Assessments%2Fimages%2F1714101280406python-program.jpg?alt=media&token=1af0f322-29a8-434f-a2ef-ca0c7e02485b",
+          "questions": [],
+          "_id": { "$oid": "662b1c235c30c7dda8088ede" },
+          "name": "python-programing"
+        },
+        {
+          "title": "DevOps",
+          "description": "Test your DevOps prowess with questions covering CI/CD pipelines, containerization, and infrastructure as code.",
+          "image": "https://firebasestorage.googleapis.com/v0/b/exam7am-9621a.appspot.com/o/Assessments%2Fimages%2F1714101489015devops.png?alt=media&token=c8cf3d9f-b6a9-437a-9b16-232c3e02f8d1",
+          "questions": [],
+          "_id": { "$oid": "662b1cf35c30c7dda8088ef4" },
+          "name": "devops"
+        },
+        {
+          "title": "AWS",
+          "description": "AWS quiz questions test your knowledge on Amazon Web Services' cloud computing platform, covering topics like EC2, S3, and IAM.",
+          "image": "https://firebasestorage.googleapis.com/v0/b/exam7am-9621a.appspot.com/o/Assessments%2Fimages%2F1714101561781aws.jpg?alt=media&token=53c41479-1f19-42b1-a394-e7915f2071f6",
+          "questions": [
+            {
+              "question": "Which database is a NoSQL database type that can quickly store and retrieve key-value pairs?",
+              "image": "",
+              "options": [
+                {
+                  "key": "one",
+                  "value": "Aurora",
+                  "_id": { "$oid": "662bf44898db619aa0a7ed6e" }
+                },
+                {
+                  "key": "two",
+                  "value": "Neptune",
+                  "_id": { "$oid": "662bf44898db619aa0a7ed6f" }
+                },
+                {
+                  "key": "three",
+                  "value": "RDS for MySQL",
+                  "_id": { "$oid": "662bf44898db619aa0a7ed70" }
+                },
+                {
+                  "key": "four",
+                  "value": "DynamoDB",
+                  "_id": { "$oid": "662bf44898db619aa0a7ed71" }
+                }
+              ],
+              "correctAnswer": "four",
+              "_id": { "$oid": "662bf44898db619aa0a7ed6d" }
+            },
+            {
+              "question": "You have a large amount of files on your network-attached storage array that must be archived and maintained for a period of 10 years due to industry regulations. This data will be infrequently accessed but must be kept What is the best AWS service for storing this data?",
+              "image": "",
+              "options": [
+                {
+                  "key": "one",
+                  "value": "EFS",
+                  "_id": { "$oid": "662cc3504eb3234d61d661b6" }
+                },
+                {
+                  "key": "two",
+                  "value": "Snowball",
+                  "_id": { "$oid": "662cc3504eb3234d61d661b7" }
+                },
+                {
+                  "key": "three",
+                  "value": "OEBS",
+                  "_id": { "$oid": "662cc3504eb3234d61d661b8" }
+                },
+                {
+                  "key": "four",
+                  "value": "S3 Glacier",
+                  "_id": { "$oid": "662cc3504eb3234d61d661b9" }
+                }
+              ],
+              "correctAnswer": "four",
+              "_id": { "$oid": "662cc3504eb3234d61d661b5" }
+            },
+            {
+              "question": "Which Elastic Load Balancing option supports Lambda as a target?",
+              "image": "",
+              "options": [
+                {
+                  "key": "one",
+                  "value": "Network Load Balancer",
+                  "_id": { "$oid": "662cc4884eb3234d61d663d5" }
+                },
+                {
+                  "key": "two",
+                  "value": "Lambda can not be called directly by incoming web requests. You must use API Gateway.",
+                  "_id": { "$oid": "662cc4884eb3234d61d663d6" }
+                },
+                {
+                  "key": "three",
+                  "value": "Classic Load Balancer",
+                  "_id": { "$oid": "662cc4884eb3234d61d663d7" }
+                },
+                {
+                  "key": "four",
+                  "value": "Application Load Balancer",
+                  "_id": { "$oid": "662cc4884eb3234d61d663d8" }
+                }
+              ],
+              "correctAnswer": "four",
+              "_id": { "$oid": "662cc4884eb3234d61d663d4" }
+            }
+          ],
+          "_id": { "$oid": "662b1d405c30c7dda8088f01" },
+          "name": "aws"
+        },
+        {
+          "name": "javascript",
+          "title": "JavaScript",
+          "description": "Welcome to our JavaScript quiz page! Test your knowledge and sharpen your coding skills with our interactive JavaScript quiz.",
+          "image": "https://firebasestorage.googleapis.com/v0/b/exam7am-9621a.appspot.com/o/Assessments%2Fimages%2F1714115939159javascript.png?alt=media&token=26e998b8-4ece-4cda-93e4-d4947a8b4240",
+          "questions": [],
+          "_id": { "$oid": "662b5a56c71390be42b62769" }
+        }
+      ],
+      "__v": { "$numberInt": "9" }
+    },
+    {
+      "_id": { "$oid": "662c97344eb3234d61d657a9" },
+      "name": "general-aptitude",
+      "title": "General Aptitude",
+      "description": "General aptitude assesses your overall cognitive abilities and problem-solving skills across different subjects and situations, often used in education and employment to gauge adaptability and potential for success.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/exam7am-9621a.appspot.com/o/Modules%2Fimages%2F1714198320732aptitude.jpg?alt=media&token=9b37f20b-3320-4f64-8763-5fb283f63641",
+      "assessments": [
+        {
+          "name": "verbal-reasoning",
+          "title": "Verbal Reasoning",
+          "description": "Verbal reasoning involves the ability to understand and analyze information presented in written form. It encompasses skills such as comprehension, critical thinking, and logical reasoning applied to written passages, statements, or arguments. ",
+          "image": "https://firebasestorage.googleapis.com/v0/b/exam7am-9621a.appspot.com/o/Assessments%2Fimages%2F1714215502675verbal-reasoning-x2.png?alt=media&token=ddc0114c-abda-4ccc-b166-655f166183ab"
+        },
+        {
+          "name": "spatial-reasoning",
+          "title": "Spatial Reasoning",
+          "description": "Spatial reasoning is the ability to understand and manipulate visual information in one's mind's eye. It involves perceiving, analyzing, and mentally rotating shapes, images, and objects in three-dimensional space. ",
+          "image": "https://firebasestorage.googleapis.com/v0/b/exam7am-9621a.appspot.com/o/Assessments%2Fimages%2F1714215734046spatial-reasoning.jpg?alt=media&token=875935be-5cb5-499a-a471-fee501660eeb"
+        },
+        {
+          "name": "abstract-reasoning",
+          "title": "Abstract Reasoning",
+          "description": "Abstract reasoning involves the ability to recognize patterns, infer relationships, and solve problems based on non-verbal and non-numeric information. It focuses on understanding concepts and relationships rather than specific details. ",
+          "image": "https://firebasestorage.googleapis.com/v0/b/exam7am-9621a.appspot.com/o/Assessments%2Fimages%2F1714215833593abstract-reasoning.png?alt=media&token=28f83bbf-929e-4276-82e0-7b520807b1e6"
+        }
+      ],
+      "__v": { "$numberInt": "3" }
+    }
+  ]
+}
