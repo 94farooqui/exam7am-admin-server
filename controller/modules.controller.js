@@ -22,7 +22,9 @@ export const addNewModule = async (req, res) => {
 export const getModuleCategoires = async (req, res) => {
   console.log(req.params.module);
 
-  const moduleFound = await Module.findOne({ name: req.params.module }).populate('assessments');
+  const moduleFound = await Module.findOne({
+    name: req.params.module,
+  }).populate("assessments");
 
   if (!moduleFound) {
     return res.status(404).json({ msg: "Not found" });
@@ -30,13 +32,6 @@ export const getModuleCategoires = async (req, res) => {
 
   //const categoryList = moduleFound
   console.log(moduleFound);
-
-  //   const categoryList = Module.find({ name: req.module })
-  //     .select("name title description image")
-  //     .populate({
-  //       path: "assessments",
-  //       select: "title description image",
-  //     });
 
   return res
     .status(200)
@@ -46,7 +41,7 @@ export const getModuleCategoires = async (req, res) => {
 export const addModuleCategory = async (req, res) => {
   const module = req.params.module;
   const newCategory = new Assessment(req.body);
-  const savedCategory = await newCategory.save()
+  const savedCategory = await newCategory.save();
 
   try {
     const foundModule = await Module.findOne({ name: module });
@@ -71,20 +66,8 @@ export const getModuleCategoryDetails = async (req, res) => {
   const module = req.params.module;
   const assessment = req.params.category;
   try {
-    const foundModule = await Module.findOne({ name: module });
-    if (!foundModule) {
-      console.log("Bad request");
-      return res.status(400).json({ msg: "Bad request" });
-    }
-
-    const fonudAssessment = foundModule.assessments.find(
-      (item) => item.name == assessment
-    );
-    if (!fonudAssessment) {
-      console.log("Bad request");
-      return res.status(400).json({ msg: "Bad request" });
-    }
-    return res.status(200).send(fonudAssessment);
+    const foundAssessment = await Assessment.findOne({name:assessment}).populate("questions")
+    return res.status(200).send(foundAssessment);
   } catch (error) {
     return res.status(500).json({ msg: error });
   }
@@ -95,24 +78,29 @@ export const addNewQuestion = async (req, res) => {
 
   console.log(module, category);
 
-  const newQuestion = new Question(req.body);
-  console.log(newQuestion);
-
   try {
-    const foundModule = await Module.findOne({ name: module });
-    if (!foundModule) {
-      console.log("Bad request");
-      return res.status(400).json({ msg: "Bad request" });
-    }
+    // const foundModule = await Module.findOne({ name: module });
+    // if (!foundModule) {
+    //   console.log("Bad request");
+    //   return res.status(400).json({ msg: "Bad request" });
+    // }
 
-    const assessmentIndex = foundModule.assessments.findIndex(
-      (obj) => obj.name == category
-    );
-    console.log("Index ", assessmentIndex);
-    foundModule.assessments[assessmentIndex].questions.push(newQuestion);
-    const saved = await foundModule.save();
+    // const assessmentIndex = foundModule.assessments.findIndex(
+    //   (obj) => obj.name == category
+    // );
+    // console.log("Index ", assessmentIndex);
+    // foundModule.assessments[assessmentIndex].questions.push(newQuestion);
+    // const saved = await foundModule.save();
 
-    if (!saved) {
+    const newQuestion = new Question(req.body);
+    const addedQuestion = await newQuestion.save(); // returns saved question with ID
+    console.log(newQuestion);
+  
+    const foundAssessment = await Assessment.findOne({ name: category });
+    foundAssessment.questions.push(addedQuestion._id);
+    const updatedAssessment = foundAssessment.save();
+
+    if (!updatedAssessment) {
       console.log("Bad request");
       return res.status(500).json({ msg: "Something went wrong" });
     }
