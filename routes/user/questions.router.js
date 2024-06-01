@@ -1,10 +1,10 @@
 import express from "express";
-import {getAllSubModules} from './../../controller/submodules.controller.js'
+import {getQuestions} from './../../controller/questions.controller.js'
 
 
 const router = express.Router();
 
-router.get('/:module', getAllSubModules)
+router.get('/:module/:subModule', getQuestions)
 
 // router.get('/:module/', (req,res)=>{
 //     console.log(req.params)

@@ -3,11 +3,14 @@ import moduleRouter from './module.router.js'
 import subModuleRouter from './submodule.router.js'
 
 import assessmentRouter from './assessment.router.js'
+import questionsRouter from './questions.router.js'
 
 const userRouter = express.Router()
 
 userRouter.use('/sub-modules', subModuleRouter)
 userRouter.use('/modules', moduleRouter)
+userRouter.use('/questions', questionsRouter )
+
 
 // userRouter.get('/:module/sub-modules', (req,res)=>{
 //     console.log(req.params)
